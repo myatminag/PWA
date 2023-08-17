@@ -1,0 +1,25 @@
+import { useInfiniteQuery } from "@tanstack/react-query";
+import apiClient from "../apiClient";
+import { RelatedGames } from "@/types/games";
+
+export const useGetStoresRelatedGames = (id: string, pageSize: number) => {
+    return useInfiniteQuery<RelatedGames>({
+        queryKey: ["stores-games", id],
+        queryFn: async ({ pageParam = 1 }) => {
+            return await apiClient
+                .get("/games", {
+                    params: {
+                        key: process.env.NEXT_PUBLIC_API_KEY,
+                        stores: id,
+                        page: pageParam,
+                        page_size: pageSize,
+                    },
+                })
+                .then((res) => res.data);
+        },
+        getNextPageParam: (lastPage, allPages) => {
+            if (lastPage.next === null) return undefined;
+            return allPages.length + 1;
+        },
+    });
+};
