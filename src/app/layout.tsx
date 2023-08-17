@@ -14,6 +14,10 @@ export const metadata = {
         immersive role-playing adventures, mind-bending puzzle games, or thrilling sports simulations, 
         we have something for every gaming taste. Our curated website features both popular AAA titles and hidden indie gems, 
         ensuring that you never run out of exciting games to play.`,
+    manifest: "/manifest.json",
+    viewport: "width=device-width, initial-scale=1",
+    icons: ["/favicon.ico"],
+    themeColor: "#ffffff",
 };
 
 export default function RootLayout({

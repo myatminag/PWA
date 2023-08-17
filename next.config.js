@@ -6,8 +6,6 @@ const withPWA = withPWAInit({
     dest: "public",
     register: true,
     skipWaiting: true,
-    sw: "/sw.js",
-    scope: "/app",
     buildExcludes: ["app-build-manifest.json"],
 });
 
